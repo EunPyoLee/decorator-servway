@@ -153,4 +153,41 @@ public class ConcreteBaseSubNoAddOnTest {
             Assertions.fail(e.toString());
         }
     }
+
+    @Test
+    public void testVeggieSub(){
+        Sub veggieSubPlain = new VeggieSub(BreadEnum.PLAIN, g);
+        Sub veggieSubWhole = new VeggieSub(BreadEnum.WHOLEWHEAT, g);
+        Sub veggieSubFlat = new VeggieSub(BreadEnum.FLAT, g);
+        Sub veggieSubWrap = new VeggieSub(BreadEnum.WRAP, g);
+
+        Assertions.assertEquals(veggieSubPlain.getName(), "Veggie" + " " + BreadEnum.PLAIN.toString());
+        Assertions.assertEquals(veggieSubWhole.getName(), "Veggie" + " " + BreadEnum.WHOLEWHEAT.toString());
+        Assertions.assertEquals(veggieSubFlat.getName(), "Veggie" + " " + BreadEnum.FLAT.toString());
+        Assertions.assertEquals(veggieSubWrap.getName(), "Veggie" + " " + BreadEnum.WRAP.toString());
+        try{
+            double cost = veggieSubPlain.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.VEGGIE) + g.getBreadCost(BreadEnum.PLAIN));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+        try{
+            double cost = veggieSubWhole.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.VEGGIE) + g.getBreadCost(BreadEnum.WHOLEWHEAT));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+        try{
+            double cost = veggieSubFlat.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.VEGGIE) + g.getBreadCost(BreadEnum.FLAT));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+        try{
+            double cost = veggieSubWrap.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.VEGGIE) + g.getBreadCost(BreadEnum.WRAP));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+    }
 }

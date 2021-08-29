@@ -1,20 +1,15 @@
-public abstract class BaseSub {
+public abstract class Sub {
     // common method "getName" and "getCost"  to be used by concrete subs
-    private String name;
-    private Double cost;
-
+    protected String name;
     private int base;
 
-    protected BaseSub(){
+    protected Sub() {
         name = "Base";
-        cost = 0.0;
     }
 
     public String getName(){
         return name;
     }
 
-    public Double getCost(){
-        return cost;
-    }
+    public abstract double getCost() throws Exception;
 }

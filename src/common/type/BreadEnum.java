@@ -1,14 +1,12 @@
 package common.type;
 
-public enum BaseEnum {
-    CHICKEN("Chicken"),
-    BEEF("Beef"),
-    MEATBALL("MeatBall"),
-    TUNA("Tuna"),
-    VEGGIE("Veggie"),
-    NONE("None");
+public enum BreadEnum {
+    PLAIN("Plain"),
+    WHOLEWHEAT("Wholewheat"),
+    WRAP("Wrap"),
+    FLAT("Flat");
     private final String name;
-    private BaseEnum(String s){
+    private BreadEnum(String s){
         name = s;
     }
     public boolean equalsName(String otherName){

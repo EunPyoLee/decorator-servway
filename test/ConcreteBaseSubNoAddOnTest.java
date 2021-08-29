@@ -42,4 +42,41 @@ public class ConcreteBaseSubNoAddOnTest {
             Assertions.fail(e.toString());
         }
     }
+
+    @Test
+    public void testBeefSub(){
+        Sub beefSubPlain = new BeefSub(BreadEnum.PLAIN, g);
+        Sub beefSubWhole = new BeefSub(BreadEnum.WHOLEWHEAT, g);
+        Sub beefSubFlat = new BeefSub(BreadEnum.FLAT, g);
+        Sub beefSubWrap = new BeefSub(BreadEnum.WRAP, g);
+
+        Assertions.assertEquals(beefSubPlain.getName(), "Beef" + " " + BreadEnum.PLAIN.toString());
+        Assertions.assertEquals(beefSubWhole.getName(), "Beef" + " " + BreadEnum.WHOLEWHEAT.toString());
+        Assertions.assertEquals(beefSubFlat.getName(), "Beef" + " " + BreadEnum.FLAT.toString());
+        Assertions.assertEquals(beefSubWrap.getName(), "Beef" + " " + BreadEnum.WRAP.toString());
+        try{
+            double cost = beefSubPlain.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.BEEF) + g.getBreadCost(BreadEnum.PLAIN));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+        try{
+            double cost = beefSubWhole.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.BEEF) + g.getBreadCost(BreadEnum.WHOLEWHEAT));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+        try{
+            double cost = beefSubFlat.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.BEEF) + g.getBreadCost(BreadEnum.FLAT));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+        try{
+            double cost = beefSubWrap.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.BEEF) + g.getBreadCost(BreadEnum.WRAP));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+    }
 }

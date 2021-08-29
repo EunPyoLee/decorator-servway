@@ -1,6 +1,7 @@
 package common;
 
 import common.exceptions.InvalidRequest;
+import common.exceptions.ServiceUnavailable;
 import common.type.BaseEnum;
 import common.type.BreadEnum;
 
@@ -28,6 +29,9 @@ public class Glossary {
 
     public double getBaseCost(BaseEnum b) throws Exception {
         if(baseToPrice.containsKey(b)){
+            if(b == BaseEnum.NONE){
+                throw new ServiceUnavailable("Service Unavailable: Please choose our base");
+            }
             return baseToPrice.get(b);
         }
         throw new InvalidRequest(String.format("Invalid Request: BaseEnum %s does not exist", b.toString()));

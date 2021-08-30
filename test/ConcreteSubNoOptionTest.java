@@ -4,7 +4,7 @@ import common.type.BreadEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ConcreteBaseSubNoAddOnTest {
+public class ConcreteSubNoOptionTest {
     private final Glossary g = new Glossary();
     @Test
     public void testChickenSub(){

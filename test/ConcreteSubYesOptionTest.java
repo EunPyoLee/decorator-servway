@@ -21,4 +21,34 @@ public class ConcreteSubYesOptionTest {
         }
     }
 
+    @Test
+    public void testOnionOption(){
+        Sub chickenSubPlain = new ChickenSub(BreadEnum.PLAIN, g);
+        chickenSubPlain = new Onion(chickenSubPlain, g);
+        Assertions.assertEquals(chickenSubPlain.getName(), "Chicken" + " " + BreadEnum.PLAIN.toString() + " " + OptionEnum.ONION.toString());
+
+        try{
+            double cost = chickenSubPlain.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.CHICKEN) + g.getBreadCost(BreadEnum.PLAIN) + g.getOptionCost(OptionEnum.ONION));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+    }
+
+    @Test
+    public void testTomatoOnionOption(){
+        Sub chickenSubPlain = new ChickenSub(BreadEnum.PLAIN, g);
+        chickenSubPlain = new Tomato(chickenSubPlain, g);
+        chickenSubPlain = new Onion(chickenSubPlain, g);
+        Assertions.assertEquals(chickenSubPlain.getName(), "Chicken" + " " + BreadEnum.PLAIN.toString() + " " + OptionEnum.TOMATO + " " + OptionEnum.ONION.toString());
+
+        try{
+            double cost = chickenSubPlain.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.CHICKEN) + g.getBreadCost(BreadEnum.PLAIN) + g.getOptionCost(OptionEnum.TOMATO) + g.getOptionCost(OptionEnum.ONION));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+    }
+
+
 }

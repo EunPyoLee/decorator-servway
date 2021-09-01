@@ -78,5 +78,19 @@ public class ConcreteSubYesOptionTest {
         }
     }
 
+    @Test
+    public void testBBQSauceOption(){
+        Sub chickenSubPlain = new ChickenSub(BreadEnum.PLAIN, g);
+        chickenSubPlain = new BBQSauce(chickenSubPlain, g);
+        Assertions.assertEquals(chickenSubPlain.getName(), "Chicken" + " " + BreadEnum.PLAIN.toString() + " " + OptionEnum.BBQ_SAUCE.toString());
+
+        try{
+            double cost = chickenSubPlain.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.CHICKEN) + g.getBreadCost(BreadEnum.PLAIN) + g.getOptionCost(OptionEnum.BBQ_SAUCE));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+    }
+
 
 }

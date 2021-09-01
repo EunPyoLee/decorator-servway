@@ -64,5 +64,19 @@ public class ConcreteSubYesOptionTest {
         }
     }
 
+    @Test
+    public void testOliveOption(){
+        Sub chickenSubPlain = new ChickenSub(BreadEnum.PLAIN, g);
+        chickenSubPlain = new Olive(chickenSubPlain, g);
+        Assertions.assertEquals(chickenSubPlain.getName(), "Chicken" + " " + BreadEnum.PLAIN.toString() + " " + OptionEnum.OLIVE.toString());
+
+        try{
+            double cost = chickenSubPlain.getCost();
+            Assertions.assertEquals(cost, g.getBaseCost(BaseEnum.CHICKEN) + g.getBreadCost(BreadEnum.PLAIN) + g.getOptionCost(OptionEnum.OLIVE));
+        } catch (Exception e){
+            Assertions.fail(e.toString());
+        }
+    }
+
 
 }
